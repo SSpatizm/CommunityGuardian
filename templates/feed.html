@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% block title %}Feed — Community Guardian{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1 class="page-title">Incident Feed</h1>
+    <p class="page-subtitle">{{ total }} incident{{ 's' if total != 1 else '' }} reported</p>
+</div>
+
+<div class="digest-grid">
+    <div class="stat-card">
+        <div class="stat-value">{{ stats.total }}</div>
+        <div class="stat-label">Total Incidents</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-value" style="color: var(--color-critical);">{{ stats.by_severity.critical }}</div>
+        <div class="stat-label">Critical</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-value" style="color: var(--color-moderate);">{{ stats.by_severity.moderate }}</div>
+        <div class="stat-label">Moderate</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-value" style="color: var(--color-informational);">{{ stats.by_severity.informational }}</div>
+        <div class="stat-label">Informational</div>
+    </div>
+</div>
+
+<div class="filter-bar">
+    <form method="GET" action="{{ url_for('feed') }}" class="filter-form">
+        <div class="filter-group">
+            <label class="filter-label" for="category">Category</label>
+            <select name="category" id="category" class="filter-select">
+                <option value="">All Categories</option>
+                {% for cat in categories %}
+                <option value="{{ cat }}" {% if active_filters.get('category') == cat %}selected{% endif %}>{{ cat|capitalize }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="filter-group">
+            <label class="filter-label" for="severity">Severity</label>
+            <select name="severity" id="severity" class="filter-select">
+                <option value="">All Severities</option>
+                {% for sev in severities %}
+                <option value="{{ sev }}" {% if active_filters.get('severity') == sev %}selected{% endif %}>{{ sev|capitalize }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="filter-group">
+            <label class="filter-label" for="location">Location</label>
+            <input type="text" name="location" id="location" class="filter-input" placeholder="Filter by area..." value="{{ active_filters.get('location', '') }}">
+        </div>
+        <div class="filter-group">
+            <label class="filter-label" for="q">Search</label>
+            <input type="text" name="q" id="q" class="filter-input" placeholder="Search reports..." value="{{ active_filters.get('q', '') }}">
+        </div>
+        <div class="filter-actions">
+            <button type="submit" class="btn btn-primary btn-sm">Filter</button>
+            {% if active_filters %}
+            <a href="{{ url_for('feed') }}" class="btn btn-secondary btn-sm">Clear</a>
+            {% endif %}
+        </div>
+    </form>
+</div>
+
+{% if active_filters %}
+<div class="active-filters">
+    {% for key, val in active_filters.items() %}
+    <span class="filter-tag">
+        {{ key }}: {{ val }}
+    </span>
+    {% endfor %}
+</div>
+{% endif %}
+
+{% if incidents %}
+<div class="incident-list">
+    {% for inc in incidents %}
+    <a href="{{ url_for('report_detail', incident_id=inc.id) }}" class="incident-card">
+        <div class="card-header">
+            <span class="card-title">{{ inc.title }}</span>
+            <div class="card-badges">
+                <span class="badge badge-{{ inc.category }}">{{ inc.category }}</span>
+                <span class="badge badge-{{ inc.severity }}">{{ inc.severity }}</span>
+            </div>
+        </div>
+        <p class="card-desc">{{ inc.description[:150] }}{% if inc.description|length > 150 %}…{% endif %}</p>
+        <div class="card-meta">
+            <span class="card-meta-item">📍 {{ inc.location }}</span>
+            <span class="card-meta-item">🕐 {{ inc.reported_at|timeago }}</span>
+            <span class="card-meta-item">
+                {% if inc.classified_by == 'ai' %}🤖 AI{% else %}⚙️ Rules{% endif %}
+            </span>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+{% else %}
+<div class="empty-state">
+    <div class="empty-state-icon">◇</div>
+    <p class="empty-state-text">
+        {% if active_filters %}
+            No incidents match your filters.
+        {% else %}
+            No incidents reported yet. Be the first to submit a report.
+        {% endif %}
+    </p>
+    <a href="{{ url_for('new_report_form') }}" class="btn btn-primary">+ New Report</a>
+</div>
+{% endif %}
+{% endblock %}

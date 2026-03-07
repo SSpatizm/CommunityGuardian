@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block title %}Community Digest — Community Guardian{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1 class="page-title">Community Safety Digest</h1>
+    <p class="page-subtitle">Overview of all reported incidents in Maplewood Heights</p>
+</div>
+
+<!-- Summary Stats -->
+<div class="digest-grid">
+    <div class="stat-card">
+        <div class="stat-value">{{ stats.total }}</div>
+        <div class="stat-label">Total Incidents</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-value" style="color: var(--color-critical);">{{ stats.by_severity.critical }}</div>
+        <div class="stat-label">Critical</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-value" style="color: var(--color-moderate);">{{ stats.by_severity.moderate }}</div>
+        <div class="stat-label">Moderate</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-value" style="color: var(--color-informational);">{{ stats.by_severity.informational }}</div>
+        <div class="stat-label">Informational</div>
+    </div>
+</div>
+
+<!-- Category Breakdown -->
+{% if stats.by_category %}
+<div class="category-breakdown">
+    <div class="breakdown-title">Incidents by Category</div>
+    {% for cat, counts in stats.by_category.items() %}
+    <div class="breakdown-row">
+        <div>
+            <span class="badge badge-{{ cat }}">{{ cat }}</span>
+        </div>
+        <div class="breakdown-counts">
+            <span class="stat-label" style="margin-top: 0;">{{ counts.total }} total</span>
+            {% if counts.critical > 0 %}
+            <span class="mini-badge badge-critical">{{ counts.critical }} critical</span>
+            {% endif %}
+            {% if counts.moderate > 0 %}
+            <span class="mini-badge badge-moderate">{{ counts.moderate }} moderate</span>
+            {% endif %}
+            {% if counts.informational > 0 %}
+            <span class="mini-badge badge-informational">{{ counts.informational }} info</span>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+<!-- Recent Incidents -->
+<div class="page-header" style="margin-top: 12px;">
+    <h2 class="page-title" style="font-size: 18px;">Recent Reports</h2>
+</div>
+
+{% if recent %}
+<div class="incident-list">
+    {% for inc in recent %}
+    <a href="{{ url_for('report_detail', incident_id=inc.id) }}" class="incident-card">
+        <div class="card-header">
+            <span class="card-title">{{ inc.title }}</span>
+            <div class="card-badges">
+                <span class="badge badge-{{ inc.category }}">{{ inc.category }}</span>
+                <span class="badge badge-{{ inc.severity }}">{{ inc.severity }}</span>
+            </div>
+        </div>
+        <p class="card-desc">{{ inc.description[:150] }}{% if inc.description|length > 150 %}…{% endif %}</p>
+        <div class="card-meta">
+            <span class="card-meta-item">📍 {{ inc.location }}</span>
+            <span class="card-meta-item">🕐 {{ inc.reported_at|timeago }}</span>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+{% else %}
+<div class="empty-state">
+    <div class="empty-state-icon">◇</div>
+    <p class="empty-state-text">No incidents reported yet.</p>
+</div>
+{% endif %}
+{% endblock %}

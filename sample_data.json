@@ -1,0 +1,92 @@
+[
+    {
+        "title": "Phishing email targeting residents",
+        "description": "Multiple neighbors on Elm Street received an email claiming to be from the city water department asking them to verify their account by clicking a link. The email address was waterdept-billing@gmail.com which is not the official city address. At least three people clicked the link before it was identified as a scam.",
+        "location": "Elm Street, Maplewood Heights",
+        "reported_at": "2026-03-07T09:15:00Z"
+    },
+    {
+        "title": "Car break-ins on Oak Avenue overnight",
+        "description": "Three vehicles on Oak Avenue between 2nd and 4th had their windows smashed overnight. Dashcams, a laptop, and loose change were stolen. Police report filed, case #MH-2026-0412. One neighbor's Ring camera caught a figure in a dark hoodie at approximately 2:30 AM.",
+        "location": "Oak Avenue, Maplewood Heights",
+        "reported_at": "2026-03-07T07:30:00Z"
+    },
+    {
+        "title": "Water main break on Cedar Lane",
+        "description": "Major water main break at the intersection of Cedar Lane and 5th Street. Water is flooding the roadway. City utility crew has been called but no ETA yet. Road is impassable in both directions. Several basements on the south side are reporting water seepage.",
+        "location": "Cedar Lane & 5th Street, Maplewood Heights",
+        "reported_at": "2026-03-07T14:00:00Z"
+    },
+    {
+        "title": "Unfamiliar van circling the block",
+        "description": "A white unmarked van with no plates has been driving slowly through the Birchwood subdivision three times in the last two hours. It stops briefly in front of houses then moves on. Could be a delivery driver who is lost, but multiple neighbors have noticed and are concerned.",
+        "location": "Birchwood Subdivision, Maplewood Heights",
+        "reported_at": "2026-03-07T16:45:00Z"
+    },
+    {
+        "title": "Strong gas smell near school",
+        "description": "Residents near Maplewood Elementary are reporting a strong natural gas smell starting around noon. The smell is strongest near the playground area. No visible source identified. School is currently in session.",
+        "location": "Maplewood Elementary, Pine Road",
+        "reported_at": "2026-03-07T12:20:00Z"
+    },
+    {
+        "title": "Ransomware attack on local dental office",
+        "description": "Dr. Chen's dental office on Main Street was hit by ransomware. Patient records including names, insurance info, and SSNs may have been compromised. The office is notifying affected patients but if you were a patient there you should freeze your credit immediately.",
+        "location": "Main Street, Maplewood Heights",
+        "reported_at": "2026-03-07T10:00:00Z"
+    },
+    {
+        "title": "Traffic light outage at major intersection",
+        "description": "The traffic signal at Maple Drive and Highway 9 has been dark since this morning. Police have not yet set up traffic control. Multiple near-misses reported. Treat as a four-way stop.",
+        "location": "Maple Drive & Highway 9, Maplewood Heights",
+        "reported_at": "2026-03-07T08:45:00Z"
+    },
+    {
+        "title": "Resolved: Missing dog found",
+        "description": "Update on the golden retriever reported missing yesterday from Willow Park. The dog has been found safe and returned to its owner. Thank you to everyone who shared the post. No further action needed.",
+        "location": "Willow Park, Maplewood Heights",
+        "reported_at": "2026-03-06T15:00:00Z"
+    },
+    {
+        "title": "Porch pirate active on Spruce Street",
+        "description": "At least five packages have been stolen from porches on Spruce Street this week. Appears to be the same individual based on doorbell camera footage — male, mid-30s, gray sedan. Police have been notified. Consider requiring signatures for deliveries or using a package locker.",
+        "location": "Spruce Street, Maplewood Heights",
+        "reported_at": "2026-03-07T11:30:00Z"
+    },
+    {
+        "title": "Possible coyote sighting near park",
+        "description": "Maybe saw a coyote near the old baseball diamond at Riverside Park yesterday evening around dusk. Not 100% sure, might be a large dog. Just wanted to mention it in case anyone with small pets wants to be extra careful.",
+        "location": "Riverside Park, Maplewood Heights",
+        "reported_at": "2026-03-06T18:30:00Z"
+    },
+    {
+        "title": "Suspicious text messages from fake bank",
+        "description": "Got a text saying my Chase account was locked and I needed to verify my identity through a link. I don't bank with Chase. Looks like a mass phishing campaign. The link goes to chase-secure-verify.com which is not a real Chase domain. Do not click.",
+        "location": "Maplewood Heights (general)",
+        "reported_at": "2026-03-07T13:10:00Z"
+    },
+    {
+        "title": "Construction noise complaint",
+        "description": "The new apartment complex on Ash Boulevard has been starting construction at 6 AM, which is before the city's allowed start time of 7 AM. This has been going on for two weeks. Minor inconvenience but might be worth a call to code enforcement.",
+        "location": "Ash Boulevard, Maplewood Heights",
+        "reported_at": "2026-03-05T06:30:00Z"
+    },
+    {
+        "title": "Armed robbery at convenience store",
+        "description": "Just heard there was an armed robbery at the QuickStop on 3rd and Maple about 20 minutes ago. Police are on scene. Suspect fled on foot heading east. Stay clear of the area. One employee was injured but is expected to be okay.",
+        "location": "3rd & Maple Drive, Maplewood Heights",
+        "reported_at": "2026-03-07T21:15:00Z"
+    },
+    {
+        "title": "Boil water advisory for north side",
+        "description": "City has issued a boil water advisory for all addresses north of Elm Street due to the water main break earlier today. Advisory is in effect until further notice. Boil tap water for at least one minute before drinking or cooking.",
+        "location": "North Maplewood Heights",
+        "reported_at": "2026-03-07T17:00:00Z"
+    },
+    {
+        "title": "Kids skateboarding in the parking garage",
+        "description": "Group of teenagers have been skateboarding in the Maplewood Plaza parking garage after hours again. Not dangerous exactly but they are making a lot of noise and the property manager has asked them to stop before. Low priority.",
+        "location": "Maplewood Plaza, Maplewood Heights",
+        "reported_at": "2026-03-07T20:00:00Z"
+    }
+]

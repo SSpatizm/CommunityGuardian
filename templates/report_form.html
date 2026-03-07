@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block title %}{% if editing %}Edit Report{% else %}New Report{% endif %} — Community Guardian{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1 class="page-title">{% if editing %}Edit Incident Report{% else %}Submit Incident Report{% endif %}</h1>
+    <p class="page-subtitle">
+        {% if editing %}
+            Update the details below. The report will be reclassified automatically.
+        {% else %}
+            Report a safety incident in your neighborhood. AI will classify and recommend actions.
+        {% endif %}
+    </p>
+</div>
+
+<div class="form-card">
+    <form method="POST" action="{% if editing %}{{ url_for('update_report', incident_id=incident.id) }}{% else %}{{ url_for('create_report') }}{% endif %}">
+
+        <div class="form-group">
+            <label for="title" class="form-label">Title</label>
+            <input
+                type="text"
+                id="title"
+                name="title"
+                class="form-input"
+                placeholder="Brief summary of the incident"
+                maxlength="200"
+                required
+                value="{{ incident.title if incident else '' }}"
+            >
+            <p class="form-hint">Short, descriptive title (e.g., "Phishing emails targeting Elm Street residents")</p>
+        </div>
+
+        <div class="form-group">
+            <label for="description" class="form-label">Description</label>
+            <textarea
+                id="description"
+                name="description"
+                class="form-textarea"
+                placeholder="Describe what happened, when, and any relevant details..."
+                maxlength="5000"
+                required
+                rows="6"
+            >{{ incident.description if incident else '' }}</textarea>
+            <p class="form-hint">Include as much detail as possible — times, locations, descriptions of individuals or vehicles, any actions already taken.</p>
+        </div>
+
+        <div class="form-group">
+            <label for="location" class="form-label">Location</label>
+            <input
+                type="text"
+                id="location"
+                name="location"
+                class="form-input"
+                placeholder="Street, intersection, or area name"
+                maxlength="200"
+                required
+                value="{{ incident.location if incident else '' }}"
+            >
+            <p class="form-hint">Neighborhood, street, or intersection where this occurred.</p>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">
+                {% if editing %}Update Report{% else %}Submit Report{% endif %}
+            </button>
+            <a href="{% if editing %}{{ url_for('report_detail', incident_id=incident.id) }}{% else %}{{ url_for('feed') }}{% endif %}" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

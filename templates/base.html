@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Community Guardian{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <a href="{{ url_for('feed') }}" class="nav-brand">
+                <img src="{{ url_for('static', filename='pan-logo.svg') }}" alt="Palo Alto Networks" class="nav-logo">
+                <span class="nav-divider"></span>
+                <span class="brand-icon">◆</span> Community Guardian
+            </a>
+            <div class="nav-links">
+                <a href="{{ url_for('feed') }}" class="nav-link {% if request.endpoint == 'feed' %}active{% endif %}">Feed</a>
+                <a href="{{ url_for('new_report_form') }}" class="nav-link btn-primary-sm {% if request.endpoint == 'new_report_form' %}active{% endif %}">+ New Report</a>
+                <a href="{{ url_for('digest') }}" class="nav-link {% if request.endpoint == 'digest' %}active{% endif %}">Digest</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container main-content">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <div class="flash-container">
+            {% for category, message in messages %}
+            <div class="flash flash-{{ category }}">
+                <span class="flash-text">{{ message }}</span>
+                <button class="flash-close" onclick="this.parentElement.remove()">×</button>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-inner">
+            <p>Community Guardian — Neighborhood Safety Intelligence</p>
+            <div class="footer-brand">
+                <span class="footer-brand-label">Built for</span>
+                <img src="{{ url_for('static', filename='pan-logo.svg') }}" alt="Palo Alto Networks" class="footer-logo">
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

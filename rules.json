@@ -1,0 +1,108 @@
+{
+    "category_keywords": {
+        "cyber": {
+            "primary": [
+                "phishing", "breach", "hack", "hacked", "ransomware", "identity theft",
+                "scam", "fraud", "spoofing", "malware", "suspicious email",
+                "account compromised", "data leak", "password stolen", "credential",
+                "trojan", "spyware", "keylogger", "social engineering"
+            ],
+            "secondary": [
+                "password", "link", "clicked", "bank", "credit card",
+                "verification code", "login", "email", "wire transfer",
+                "social security", "account", "unauthorized", "verify",
+                "ssn", "two factor", "2fa", "otp"
+            ]
+        },
+        "criminal": {
+            "primary": [
+                "assault", "robbery", "shooting", "weapon", "break in",
+                "burglary", "theft", "vandalism", "carjacking", "gunshot",
+                "stabbing", "mugging", "arson", "kidnapping", "armed",
+                "stolen", "porch pirate"
+            ],
+            "secondary": [
+                "police", "911", "witness", "suspect", "victim",
+                "arrested", "smashed", "broken into", "threatening",
+                "case number", "detective", "crime", "fled"
+            ]
+        },
+        "infrastructure": {
+            "primary": [
+                "power outage", "water main", "gas leak", "road closure",
+                "sinkhole", "flooding", "fire", "downed line", "construction",
+                "transformer", "sewage", "traffic light", "pothole",
+                "boil water"
+            ],
+            "secondary": [
+                "utility", "blocked", "closed", "hazard", "damaged",
+                "repair crew", "detour", "outage", "leak", "broken",
+                "impassable", "dark", "flooded", "collapsed"
+            ]
+        },
+        "suspicious": {
+            "primary": [
+                "suspicious person", "suspicious vehicle", "loitering",
+                "trespassing", "casing", "surveillance", "prowler",
+                "unfamiliar vehicle", "unfamiliar van", "circling"
+            ],
+            "secondary": [
+                "camera", "ring", "noticed", "unusual", "repeated",
+                "doorbell", "watching", "parked", "stranger",
+                "unmarked", "no plates", "slowly"
+            ]
+        },
+        "health": {
+            "primary": [
+                "contamination", "air quality", "chemical spill", "outbreak",
+                "boil water advisory", "mold", "asbestos", "hazmat", "toxic",
+                "gas smell", "natural gas"
+            ],
+            "secondary": [
+                "smell", "fumes", "sick", "advisory", "rash", "hospital",
+                "epa", "symptoms", "nausea", "headache", "evacuate",
+                "ventilation"
+            ]
+        }
+    },
+    "severity_escalators": [
+        "immediate", "emergency", "danger", "active", "ongoing",
+        "armed", "right now", "help", "urgent", "serious", "spreading",
+        "multiple", "growing", "currently", "in progress", "just happened"
+    ],
+    "severity_deescalators": [
+        "possible", "maybe", "minor", "old", "resolved",
+        "yesterday", "false alarm", "might be", "not sure",
+        "used to", "no longer", "past", "last week", "low priority",
+        "not dangerous", "no further"
+    ],
+    "base_severity": {
+        "cyber": "critical",
+        "criminal": "critical",
+        "infrastructure": "moderate",
+        "suspicious": "moderate",
+        "health": "moderate",
+        "uncategorized": "informational"
+    },
+    "action_table": {
+        "cyber_critical": "Change all passwords immediately. Enable two-factor authentication on all accounts. Check bank and credit card statements for unauthorized transactions. File a report with your local cybercrime unit.",
+        "cyber_moderate": "Review recent login activity on mentioned accounts. Update passwords for affected services. Monitor your statements for the next 30 days.",
+        "cyber_informational": "Be aware of this reported scam. Do not click unfamiliar links. No immediate action required.",
+        "criminal_critical": "Call 911 immediately if not already done. Do not approach or intervene. Lock doors, stay inside, and await official all-clear.",
+        "criminal_moderate": "Report to local police non-emergency line if not already reported. Secure your property. Review security camera footage if available.",
+        "criminal_informational": "Incident logged for community awareness. No immediate action needed. Stay alert in the reported area.",
+        "infrastructure_critical": "Evacuate the area if directed by authorities. Avoid the affected zone. Contact your utility provider's emergency line.",
+        "infrastructure_moderate": "Avoid the affected area. Check your utility provider's status page for updates. Report to 311 if not already reported.",
+        "infrastructure_informational": "Minor infrastructure issue noted. No immediate impact expected. Report to 311 if it worsens.",
+        "suspicious_critical": "Do not approach. Call 911 if activity appears threatening. Lock doors and stay inside.",
+        "suspicious_moderate": "Note details (vehicle plate, physical description, time). Report to police non-emergency line. Alert immediate neighbors.",
+        "suspicious_informational": "Activity logged for community awareness. Stay alert but no action required.",
+        "health_critical": "Follow official advisories immediately. Seal windows if air quality issue. Use bottled water if water advisory. Seek medical attention if symptomatic.",
+        "health_moderate": "Monitor local health department updates. Limit exposure to affected area. Seek medical advice if you experience symptoms.",
+        "health_informational": "Health advisory noted. No immediate risk reported. Monitor for updates.",
+        "uncategorized_critical": "Review report details and assess personal risk. Contact local authorities if you believe you are affected.",
+        "uncategorized_moderate": "Report logged for community review. No specific action recommended at this time.",
+        "uncategorized_informational": "Report logged for community awareness. No action required."
+    },
+    "secondary_keyword_threshold": 2
+}

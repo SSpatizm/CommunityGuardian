@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}{{ incident.title }} — Community Guardian{% endblock %}
+
+{% block content %}
+<div class="detail-card">
+    <div class="detail-header">
+        <h1 class="detail-title">{{ incident.title }}</h1>
+        <div class="detail-badges">
+            <span class="badge badge-{{ incident.category }}">{{ incident.category }}</span>
+            <span class="badge badge-{{ incident.severity }}">{{ incident.severity }}</span>
+        </div>
+        <div class="detail-meta">
+            <span>📍 {{ incident.location }}</span>
+            <span>🕐 Reported {{ incident.reported_at|timeago }} — {{ incident.reported_at|formatdate }}</span>
+            <span>📥 Created {{ incident.created_at|formatdate }}</span>
+        </div>
+    </div>
+
+    <div class="detail-body">
+        <div class="detail-description">{{ incident.description }}</div>
+
+        <div class="action-box">
+            <div class="action-box-title">Recommended Action</div>
+            <div class="action-box-text">{{ incident.action }}</div>
+        </div>
+
+        <div class="classification-meta">
+            <dl>
+                <dt>Classified By</dt>
+                <dd>
+                    {% if incident.classified_by == 'ai' %}
+                        🤖 AI (confidence: {{ "%.2f"|format(incident.confidence) }})
+                    {% else %}
+                        ⚙️ Rule Engine (deterministic)
+                    {% endif %}
+                </dd>
+
+                {% if incident.matched_keywords %}
+                <dt>Matched Keywords</dt>
+                <dd>
+                    {% for kw in incident.matched_keywords %}
+                    <span class="badge badge-{{ incident.category }}" style="font-family: var(--font-mono); font-size: 11px;">{{ kw }}</span>
+                    {% endfor %}
+                </dd>
+                {% endif %}
+
+                {% if incident.fallback_reason %}
+                <dt>Fallback Reason</dt>
+                <dd>AI was unavailable: {{ incident.fallback_reason }}</dd>
+                {% endif %}
+            </dl>
+        </div>
+    </div>
+
+    <div class="detail-actions">
+        <a href="{{ url_for('edit_report_form', incident_id=incident.id) }}" class="btn btn-secondary btn-sm">Edit Report</a>
+        <a href="{{ url_for('feed') }}" class="btn btn-secondary btn-sm">← Back to Feed</a>
+    </div>
+</div>
+{% endblock %}
