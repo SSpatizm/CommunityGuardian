@@ -112,9 +112,9 @@ Authentication was deliberately scoped out of this prototype. In production, the
 
 ## AI Disclosure
 
-- **Did you use an AI assistant?** Yes — Claude was used for architecture design, code scaffolding, and code review.
-- **How did you verify suggestions?** [tba — e.g., manually reviewed all generated code, tested each classification path independently, verified rule engine outputs against expected classifications for all 15 seed incidents]
-- **One example of a suggestion you rejected or changed:** I think the 
+- **Did you use an AI assistant?** Yes, Claude was used for architecture design, code scaffolding, and code review.
+- **How did you verify suggestions?** I believe that AI-generated code is a great tool, but needs to be tested and reviewed against architecture specification to ensure correct seperation of data layers and proper adherence to contracts. All classification logic was tested using pytest, covering classification paths, fallback behaviour, severity scoring, and input validation. Integration behavior (Create/View/Edit, filtering, fallback triggers, and validation errors) was tested manually end-to-end.
+- **One example of a suggestion you rejected or changed:** One suggestion that occured during development was the use of implementing a small, fine-tuned local model as a fallback when the commercial LLM was unavailable. While it was technically interesting, I rejected this approach because not only did the assignment explicitly required manual/rule-based fallback, a secondary model would still be probabilistic and introduce additional failure modes. I instead implemented a deterministic keyword-based rule engine that has zero external dependencies and guarantees graceful fallback, and left the multi-tier classification cascade up as a possible future feature.
 
 ## Tradeoffs & Prioritization
 
