@@ -114,7 +114,7 @@ Authentication was deliberately scoped out of this prototype. In production, the
 
 - **Did you use an AI assistant?** Yes — Claude was used for architecture design, code scaffolding, and code review.
 - **How did you verify suggestions?** [tba — e.g., manually reviewed all generated code, tested each classification path independently, verified rule engine outputs against expected classifications for all 15 seed incidents]
-- **One example of a suggestion you rejected or changed:** [tba]
+- **One example of a suggestion you rejected or changed:** I think the 
 
 ## Tradeoffs & Prioritization
 
@@ -137,7 +137,7 @@ Authentication was deliberately scoped out of this prototype. In production, the
 
 ### Known Limitations
 
-- No authentication — any user can create or edit any report.
+- No authentication, so any user can create or edit any report.
 - Location is free text, not geocoded, which means no proximity-based filtering.
 - Rule engine keyword matching is English-only and does not handle synonyms, typos, or multilingual input.
 - AI classification requires network access and incurs API costs per request.
@@ -150,6 +150,6 @@ Authentication was deliberately scoped out of this prototype. In production, the
 |--------|---------------|
 | **Anxiety Reduction** | AI and fallback generate specific, calm action items rather than raw data dumps. Severity badges provide instant visual triage. The feed replaces social media noise with structured intelligence. |
 | **Contextual Relevance** | Location field enables per-area filtering. Category/severity classification provides immediate context. Stat cards on the feed give at-a-glance community safety posture. |
-| **Trust & Privacy** | No user accounts or tracking. Location is self-reported free text, not geocoded. No PII collected beyond incident descriptions. Classification transparency: users see which system classified their report and why. |
+| **Trust & Privacy** |  Authentication was scoped out of this prototype. No PII is collected or stored beyond self-reported incident descriptions. Location is free text, not geocoded. In production, user accounts with role-based access would be required for accountability and moderation, with privacy controls governing data visibility. With classification transparency, users see which system classified their report and why. |
 | **AI Application** | AI classifies with structured output, validated against a strict schema before acceptance. Malformed or out-of-bounds responses are rejected and the system falls back to deterministic classification. The adapter pattern makes the distinction invisible to the end user. |
 | **Responsible AI** | AI output is never trusted blindly, and it passes through a validation gate. The rule engine fallback cannot be prompt-injected. Classification metadata is fully transparent. Confidence of 0.0 for rule-based classifications is honest about the system's certainty. |
