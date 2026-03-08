@@ -40,7 +40,7 @@ pytest tests/test_classifier.py -v
 
 ## Video Demo
 
-[Will be added after it gets recorded]
+https://youtu.be/I37SMOKIlew
 
 ## Architecture
 
