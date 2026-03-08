@@ -12,7 +12,7 @@ Eugene Petrov
 
 ## Estimated Time Spent
 
-4 hours
+5 hours
 
 ## Quick Start
 
